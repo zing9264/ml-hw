@@ -1,21 +1,22 @@
 MODEL:
-  OUTPUT_PATH: "/home/apie/projects/ml_hw/hw2/weights/model.pth"
+  OUTPUT_PATH: 'G:\CCU\4.senior\ccu2020ml\hw02\ml-hw\hw2\weights\model.pth'
   LR: 0.001
-  EPOCH: 5
+  EPOCH: 50
 
 DATA:
   PIXEL_MEAN: [0.485, 0.456, 0.406]
   PIXEL_STD: [0.229, 0.224, 0.225]
-  RESIZE: [224, 224]
+  RESIZE: [224,224]
   TRAIN_BATCH_SIZE: 32
   TEST_BATCH_SIZE: 2
   VALIDATION_SIZE: 0.2
-  NUM_WORKERS: 4
+  NUM_WORKERS: 0
+
 
 PATH:
-  TRAIN_SET: "/home/apie/projects/ml_hw/hw2/Cat_Dog_data/train"
-  TEST_SET: "/home/apie/projects/ml_hw/hw2/Cat_Dog_data/test"
+  TRAIN_SET: 'G:\CCU\4.senior\ccu2020ml\hw02\ml-hw\hw2\mongo_data\train'
+  TEST_SET: 'G:\CCU\4.senior\ccu2020ml\hw02\ml-hw\hw2\mongo_data\dev'
 
 DEVICE:
-  GPU: 1
+  GPU: 0
   CUDA: True

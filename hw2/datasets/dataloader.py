@@ -18,7 +18,7 @@ def make_train_loader(cfg):
     transforms = build_transform(cfg)
 
     trainset = datasets.ImageFolder(train_path, transform=transforms)
-    
+
     num_train = len(trainset)
     indices = list(range(num_train))
     split = int(np.floor(valid_size * num_train))

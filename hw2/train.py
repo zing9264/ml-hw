@@ -14,12 +14,12 @@ weight_path = cfg.MODEL.OUTPUT_PATH
 use_cuda    = cfg.DEVICE.CUDA
 gpu_id      = cfg.DEVICE.GPU
 
-
 if use_cuda:
     torch.cuda.set_device(gpu_id)
     model = model.cuda()
 
 train_loader, valid_loader = make_train_loader(cfg)
+
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
 for epoch in range(1, epochs+1):
@@ -51,9 +51,8 @@ for epoch in range(1, epochs+1):
     valid_loss /= int(np.floor(len(valid_loader.dataset) * valid_size))
     print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}'.format(epoch, train_loss, valid_loss))
 
-output_dir = "/".join(weight_path.split("/")[:-1])
+output_dir = "\\".join(weight_path.split("\\")[:-1])
 if not os.path.exists(output_dir):
     os.makedirs(output_dir, exist_ok=True)
 
 torch.save(model.state_dict(), weight_path)
-

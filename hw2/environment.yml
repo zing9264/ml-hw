@@ -23,7 +23,7 @@ dependencies:
   - libstdcxx-ng=9.1.0=hdf63c60_0
   - libtiff=4.1.0=h2733197_0
   - mkl=2020.0=166
-  - mkl-service=2.3.0=py36he904b0f_0
+  - mkl-service=2.3.0=c
   - mkl_fft=1.0.15=py36ha843d7b_0
   - mkl_random=1.1.0=py36hd6b4f25_0
   - ncurses=6.2=he6710b0_0
