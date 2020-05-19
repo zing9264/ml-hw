@@ -1,5 +1,5 @@
 MODEL:
-  OUTPUT_PATH: 'G:\CCU\4.senior\ccu2020ml\hw02\ml-hw\hw2\weights\model.pth'
+  OUTPUT_PATH: 'weights\model.pth'
   LR: 0.001
   EPOCH: 50
 
@@ -14,8 +14,8 @@ DATA:
 
 
 PATH:
-  TRAIN_SET: 'G:\CCU\4.senior\ccu2020ml\hw02\ml-hw\hw2\mongo_data\train'
-  TEST_SET: 'G:\CCU\4.senior\ccu2020ml\hw02\ml-hw\hw2\mongo_data\dev'
+  TRAIN_SET: 'mongo_data\train'
+  TEST_SET: 'mongo_data\dev'
 
 DEVICE:
   GPU: 0
