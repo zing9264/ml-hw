@@ -1,11 +1,16 @@
 from model      import cnn_model
 from config      import cfg
-from datasets    import make_train_loader
-
+from datasets import make_train_loader
+import datetime
+import torch.nn as nn  
+import torchvision.models as models
 import torch, os
 import numpy as np
 
-model = cnn_model()
+model = models.resnet50()
+fc_features = model.fc.in_features
+model.fc = nn.Linear(fc_features, 3)
+
 
 valid_size  = cfg.DATA.VALIDATION_SIZE
 epochs      = cfg.MODEL.EPOCH
@@ -20,7 +25,7 @@ if use_cuda:
 
 train_loader, valid_loader = make_train_loader(cfg)
 
-optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+optimizer = torch.optim.Adam(model.parameters(), lr=lr,weight_decay=0.0001)
 
 for epoch in range(1, epochs+1):
     model.train()
@@ -50,9 +55,13 @@ for epoch in range(1, epochs+1):
     train_loss /= int(np.floor(len(train_loader.dataset) * (1 - valid_size)))
     valid_loss /= int(np.floor(len(valid_loader.dataset) * valid_size))
     print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}'.format(epoch, train_loss, valid_loss))
+    output_dir = "\\".join(weight_path.split("\\")[:-1])
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir, exist_ok=True)
+    torch.save(model.state_dict(), weight_path.replace(".pth",str(epoch)+".pth"))
+    print(datetime.datetime.now())
 
 output_dir = "\\".join(weight_path.split("\\")[:-1])
 if not os.path.exists(output_dir):
-    os.makedirs(output_dir, exist_ok=True)
-
+        os.makedirs(output_dir, exist_ok=True)
 torch.save(model.state_dict(), weight_path)

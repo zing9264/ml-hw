@@ -1,21 +1,21 @@
 MODEL:
   OUTPUT_PATH: 'weights\model.pth'
   LR: 0.001
-  EPOCH: 50
+  EPOCH: 80
 
 DATA:
   PIXEL_MEAN: [0.485, 0.456, 0.406]
   PIXEL_STD: [0.229, 0.224, 0.225]
   RESIZE: [224,224]
   TRAIN_BATCH_SIZE: 32
-  TEST_BATCH_SIZE: 2
+  TEST_BATCH_SIZE: 1
   VALIDATION_SIZE: 0.2
   NUM_WORKERS: 0
 
 
 PATH:
-  TRAIN_SET: 'mongo_data\train'
-  TEST_SET: 'mongo_data\dev'
+  TRAIN_SET: 'mongo_data\train_and_dev'
+  TEST_SET: 'mongo_data\C1-P1_Test'
 
 DEVICE:
   GPU: 0

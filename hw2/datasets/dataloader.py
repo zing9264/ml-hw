@@ -38,7 +38,7 @@ def make_test_loader(cfg):
 
     num_workers = cfg.DATA.NUM_WORKERS
     batch_size  = cfg.DATA.TEST_BATCH_SIZE
-    test_path   = cfg.PATH.TEST_SET
+    test_path   = 'mongo_data\dev'
 
     transforms = build_transform(cfg)
 
@@ -48,3 +48,16 @@ def make_test_loader(cfg):
 
     return test_loader
 
+def make_nolabeltest_loader(cfg):
+
+    num_workers = cfg.DATA.NUM_WORKERS
+    batch_size  = cfg.DATA.TEST_BATCH_SIZE
+    test_path   = cfg.PATH.TEST_SET
+
+    transforms = build_transform(cfg)
+
+    testset = datasets.ImageFolder(test_path, transform=transforms)
+
+    test_loader = DataLoader(testset, batch_size=batch_size, num_workers=num_workers)
+
+    return test_loader
